@@ -21,15 +21,15 @@
 <br />
 <div align="center">
   <a href="https://github.com/KayloPortal/Three-Faq-Accordions">
-    <img src="https://statisticsguyana.gov.gy/wp-content/uploads/2021/02/FAQ-Logo.png" alt="Logo" height="80">
+    <img src="https://img.freepik.com/free-vector/hotel-tower-concept-illustration_114360-12752.jpg?w=740&t=st=1710256436~exp=1710257036~hmac=e4a95c0495deefe20cfa8cc116ded67377b3e39c2f374155d5b26a204b24e834" alt="Logo" height="80">
   </a>
 
-<h3 align="center">Three Special FAQ Accordions</h3>
+<h3 align="center">Hotel Booking</h3>
 
   <p align="center">
     This is a practice project for ReactJS & CSS:
     <br />
-    <a href="https://65f0621852e96c170831f787--loquacious-florentine-b4d10f.netlify.app/"><strong>View The Live Site »</strong></a>
+    <a href="https://google.com"><strong>View The Live Site »</strong></a>
     <br />
     <br />
     <a href="https://github.com/KayloPortal/Three-Faq-Accordions/issues">Report Bug</a>
