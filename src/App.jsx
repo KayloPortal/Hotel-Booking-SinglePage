@@ -8,10 +8,10 @@ function App() {
   return (
    <>
     <Header />
-    <div>
+    <main>
       <Hotels />
       <Map />
-    </div>
+    </main>
    </>
   )
 }
