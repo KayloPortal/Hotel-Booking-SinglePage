@@ -1,3 +1,4 @@
+import "./Header.css";
 import iconLogo from "/icon-logo.svg";
 import iconSearch from "/icon-search.svg";
 import iconPhone from "/icon-phone.svg";
@@ -8,19 +9,21 @@ import imgAvatar from "/image-avatar.png";
 function Header() {
   return (
     <header className="header">
-      <div>
-        <img src={iconLogo} alt="Brand Logo" />
-        <SearchForm />
-      </div>
-      <div>
-        <div className="header-phone">
-          <img src={iconPhone} alt="phone" />
-          <p>+ 1 (800) 657 8976</p>
+      <div className="header-container | container">
+        <div className="header-wrap">
+          <img className="header__logo" src={iconLogo} alt="Brand Logo" />
+          <SearchForm />
         </div>
-        <div className="header-profile">
-          <img src={imgAvatar} alt="your profile image" />
-          <p>Jon Doe</p>
-          <img src={iconChevDown} alt="open profile menu" />
+        <div className="header-wrap">
+          <div className="header-phone">
+            <img className="header-phone__icon" src={iconPhone} alt="phone" />
+            <p className="header-phone__number">+ 1 (800) 657 8976</p>
+          </div>
+          <div className="header-profile">
+            <img className="header-profile__icon" src={imgAvatar} alt="your profile image" />
+            <p className="header-profile__number">Jon Doe</p>
+            <img src={iconChevDown} alt="open profile menu" />
+          </div>
         </div>
       </div>
     </header>
