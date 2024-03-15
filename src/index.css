@@ -84,9 +84,10 @@
 
 body {
   font-family: var(--ff-main);
-  color: var(--neutral-800);
+  color: var(--neutral-700);
   box-sizing: border-box;
   font-weight: var(--fw-light);
+  line-height: var(--fl-height-100);
 }
 
 a {
@@ -237,4 +238,12 @@ ul[role="list"] {
 
 .fl-height-200 {
   line-height: var(--fl-height-200);
+}
+
+.fw-extrabold {
+  font-weight: var(--fw-extrabold);
+}
+
+.fw-light {
+  font-weight: var(--fw-light);
 }
