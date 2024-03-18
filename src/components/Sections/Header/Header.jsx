@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./Header.css";
 import iconLogo from "/icon-logo.svg";
 import iconSearch from "/icon-search.svg";
@@ -8,33 +9,78 @@ import imgAvatar from "/image-avatar.png";
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
-import gsap from "gsap";
+import gsap, { Expo } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
   // GSAP Animating
   const container = useRef();
-
+  const { contextSafe } = useGSAP({ scope: container });
   useGSAP(
     () => {
-      gsap.fromTo(".header__logo", { opacity: 0 }, { opacity: 1, duration: 1 });
+      let comeupTL = gsap.timeline();
+
+      comeupTL.fromTo(
+        ".header__logo, .header-toggle",
+        { opacity: 0, y: -100, skewX: 30 },
+        { opacity: 1, skewX: 0, duration: 3, y: 0, ease: Expo.easeOut }
+      );
+
+      comeupTL.fromTo(
+        ".header-toggle",
+        { opacity: 0, y: -100, skewX: -30 },
+        { opacity: 1, skewX: 0, duration: 3, y: 0, ease: Expo.easeOut },
+        "<"
+      );
+
+      comeupTL.fromTo(
+        ".header-wrap .header-phone, .header-wrap .header-profile, .header .search",
+        {
+          y: -100,
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          y: 0,
+          stagger: 0.25,
+          delay: 1,
+          ease: Expo.easeOut,
+        },
+        "<"
+      );
+
+      gsap.set(".header-info", { x: "8rem" });
     },
     { scope: container }
   );
+
   //
 
-  function toggleMenu() {
-    setShowMenu((prev) => {
-      if (prev) {
+  const toggleMenu = contextSafe(() => {
+    setShowMenu((prevShow) => {
+      if (prevShow) {
+        console.log("closing");
         // to close
-        // gsap.to(".header-wrap");
+        gsap.to(".header-info", {
+          zIndex: -1,
+          opacity: 0,
+          x: "8rem",
+          duration: 0.25,
+        });
       } else {
-        gsap.to("header-info", {opacity: 1, duration: 1})
+        console.log("openning");
+        gsap.to(".header-info", {
+          opacity: 1,
+          zIndex: 20,
+          x: 0,
+          duration: 0.25,
+        });
       }
-      return !prev;
+      return !prevShow;
     });
-  }
+  });
 
   const headerInfo = (
     <>

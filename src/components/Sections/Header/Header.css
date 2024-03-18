@@ -92,6 +92,7 @@
   display: grid;
   place-items: center;
   border-radius: var(--radius-100);
+  margin-left: 1.25rem;
 }
 
 .header-toggle__icon {
@@ -104,17 +105,21 @@
     position: fixed;
     justify-items: end;
     inset: 0;
-    display: none;
+    display: grid;
+    opacity: 0;
+    z-index: -1;
+    /* display: none; */
   }
 
-  .header-info--open {
+  /* .header-info--open {
     opacity: 1;
     display: grid;
-  }
+  } */
 
   .header-info__backdrop {
     position: absolute;
     inset: 0;
+    left: -8rem;
     background-color: var(--neutral-800);
     opacity: .5;
   }
@@ -150,5 +155,11 @@
 
   .header-info-content .header-profile {
     margin: 0;
+  }
+}
+
+@media(max-width: 35em) {
+  .header .search {
+    display: none;
   }
 }
