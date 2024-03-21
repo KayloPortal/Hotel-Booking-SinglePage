@@ -47,13 +47,13 @@
 @font-face {
   font-family: "Gilroy";
   font-weight: 800;
-  src: url("Gilroy-ExtraBold.otf") format("opentype");
+  src: url("/src/fonts/Gilroy-ExtraBold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Gilroy";
   font-weight: 300;
-  src: url("Gilroy-Light.otf.otf") format("opentype");
+  src: url("/src/fonts/Gilroy-Light.otf.otf") format("opentype");
 }
 
 /* defaults */
