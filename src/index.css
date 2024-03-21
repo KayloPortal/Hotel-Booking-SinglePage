@@ -31,6 +31,7 @@
   --neutral-600: #333333;
   --neutral-700: #3e4958;
   --neutral-800: #000000;
+  --neutral-810: hsla(0, 0%, 0%, 0.15);
 
   /* Layout */
   --page-inline-padding: 1.875rem;
@@ -47,13 +48,13 @@
 @font-face {
   font-family: "Gilroy";
   font-weight: 800;
-  src: url("/src/fonts/Gilroy-ExtraBold.otf") format("opentype");
+  src: url("./fonts/Gilroy-ExtraBold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Gilroy";
   font-weight: 300;
-  src: url("/src/fonts/Gilroy-Light.otf.otf") format("opentype");
+  src: url("./fonts/Gilroy-Light.otf.otf") format("opentype");
 }
 
 /* defaults */

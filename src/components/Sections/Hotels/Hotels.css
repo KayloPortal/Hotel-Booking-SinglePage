@@ -4,7 +4,7 @@
 
 .hotels__heading {
   line-height: 1.75rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1.875rem;
 }
 
@@ -16,7 +16,7 @@
 
 .hotels__tag {
   border-radius: 100vw;
-  padding: .675rem 1.875rem;
+  padding: 0.675rem 1.875rem;
   border: 0.5px var(--neutral-700) solid;
 }
 
@@ -28,4 +28,42 @@
 
 .hotels__filter-icon {
   margin-left: auto;
+}
+
+.hotels-list {
+  list-style: none;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.875rem;
+}
+
+.hotel {
+  background-color: var(--neutral-100);
+  box-shadow: 0px 0.25rem 0.9375rem var(--neutral-810);
+  padding: 0.675rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 9fr 10fr;
+}
+
+.hotel-texts {
+  padding-block: 0.675rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .875rem;
+}
+
+.hotel-texts > div {
+  display: flex;
+  align-items: center;
+}
+
+.hotel__rate-number {
+  margin-left: .25rem;
+  margin-right: 1.25rem;
+}
+
+.hotel__type-text {
+  margin-left: .6875rem;
 }
