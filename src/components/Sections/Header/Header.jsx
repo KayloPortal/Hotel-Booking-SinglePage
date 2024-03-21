@@ -165,6 +165,10 @@ function SearchForm() {
     setInputTag(e.target.value);
   };
 
+  const removeTag = (id) => {
+    setTags(prevTags => prevTags.filter(tag => tag.id !== id))
+  }
+
   function generateColor() {
     return colors[Math.floor(Math.random() * colors.length)];
   }
