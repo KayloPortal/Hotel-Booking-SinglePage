@@ -11,6 +11,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 import gsap, { Expo } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { nanoid } from "nanoid";
+import { useSearchParams } from "react-router-dom";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -128,17 +130,80 @@ function Header() {
   );
 }
 
+// tag: {name: ""}
+
+const colors = [
+  "rgba(246, 192, 2, 0.26)",
+  "rgba(2, 129, 246, 0.26)",
+  "rgba(71, 145, 255, 0.26)",
+  "rgba(122, 255, 119, 0.26)",
+];
+
 function SearchForm() {
+  const [tags, setTags] = useState([
+    { name: "Los Angeles", id: nanoid(), bgColor: colors[0] },
+  ]);
+  const [inputTag, setInputTag] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const tagSubmitHandler = () => {
+    setTags((prevTags) => [
+      ...prevTags,
+      { name: inputTag, id: nanoid(), bgColor: generateColor() },
+    ]);
+    setInputTag("");
+  };
+
+  const submitSearch = () => {
+    for (const key of tags) {
+      searchParams.append("location", key.name);
+    }
+    setSearchParams(searchParams);
+  };
+
+  const inputChangeHandler = (e) => {
+    setInputTag(e.target.value);
+  };
+
+  function generateColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
   return (
-    <form className="search" action="">
+    <form className="search" action="" onSubmit={submitSearch}>
       <select className="search-options">Rent</select>
 
       <div className="search-tags">
-        <div className="search-tag | round-100">
-          <p className="search-tag__text">Los Angeles</p>
-          <img src={iconCross} className="search-tag__icon" alt="delete tag" />
-        </div>
-        <input className="search__input" type="text" name="" id="" />
+        {tags.map((tag) => (
+          <button
+            onClick={() => removeTag(tag.id)}
+            style={{ backgroundColor: tag.bgColor }}
+            className="search-tag | round-100"
+            key={tag.id}
+          >
+            <p className="search-tag__text">{tag.name}</p>
+
+            <img
+              src={iconCross}
+              className="search-tag__icon"
+              alt="delete tag"
+            />
+          </button>
+        ))}
+        <input
+          className="search__input"
+          type="text"
+          name=""
+          id=""
+          value={inputTag}
+          onChange={inputChangeHandler}
+          onKeyDown={(e) => {
+            if (e.code == "Enter") {
+              e.preventDefault();
+              tagSubmitHandler();
+            }
+          }}
+        />
       </div>
 
       <button
