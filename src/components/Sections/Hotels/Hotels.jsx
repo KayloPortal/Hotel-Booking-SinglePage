@@ -1,4 +1,4 @@
-
+import "./Hotels.css"
 
 function Hotels() {
   return (
