@@ -6,7 +6,7 @@ import iconPhone from "/icon-phone.svg";
 import iconChevDown from "/icon-chevron-down.svg";
 import iconCross from "/icon-cross.svg";
 import imgAvatar from "/image-avatar.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 import gsap, { Expo } from "gsap";
@@ -146,6 +146,10 @@ function SearchForm() {
   const [inputTag, setInputTag] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    submitSearch()
+  }, []);
+
   const tagSubmitHandler = () => {
     setTags((prevTags) => [
       ...prevTags,
@@ -154,20 +158,22 @@ function SearchForm() {
     setInputTag("");
   };
 
-  const submitSearch = () => {
+  const removeTag = (id) => {
+    setTags((prevTags) => prevTags.filter((tag) => tag.id !== id));
+  };
+
+  function submitSearch(e=false) {
+    if (e) e.preventDefault();
+    searchParams.delete("location");
     for (const key of tags) {
       searchParams.append("location", key.name);
     }
     setSearchParams(searchParams);
-  };
+  }
 
   const inputChangeHandler = (e) => {
     setInputTag(e.target.value);
   };
-
-  const removeTag = (id) => {
-    setTags(prevTags => prevTags.filter(tag => tag.id !== id))
-  }
 
   function generateColor() {
     return colors[Math.floor(Math.random() * colors.length)];
