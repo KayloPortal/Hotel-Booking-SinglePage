@@ -9,6 +9,7 @@ import imageHotel1 from "/image-hotel-1.png";
 import imageHotel2 from "/image-hotel-2.png";
 import imageHotel3 from "/image-hotel-3.png";
 import { useState } from "react";
+import GoogleMap from "google-map-react"
 
 const hotels = [
   {
@@ -92,8 +93,8 @@ function Hotel({data}) {
       <div className="hotel-image">
         <img className="hotel__image | round-400" src={data.image} alt="" />
       </div>
-      <div className="hotel-texts | fl-height-100 fs-200">
-        <h3 className="hotel__heading | fw-extrabold fs-400">
+      <div className="hotel-texts | fl-height-100 fs-200 fs-100-m">
+        <h3 className="hotel__heading | fw-extrabold fs-400 fs-200-m">
           {data.title}
         </h3>
         <div>
