@@ -9,7 +9,6 @@ import imageHotel1 from "/image-hotel-1.png";
 import imageHotel2 from "/image-hotel-2.png";
 import imageHotel3 from "/image-hotel-3.png";
 import { useState } from "react";
-import GoogleMap from "google-map-react"
 
 const hotels = [
   {
