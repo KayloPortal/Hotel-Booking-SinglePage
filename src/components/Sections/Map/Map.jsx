@@ -1,3 +1,4 @@
+import "./Map.css"
 import { useState } from "react";
 import { Marker, Popup } from "react-leaflet";
 import { MapContainer } from "react-leaflet/MapContainer";
