@@ -1,42 +1,37 @@
-import "./Map.css"
-import { useState } from "react";
-import { Marker, Popup } from "react-leaflet";
-import { MapContainer } from "react-leaflet/MapContainer";
-import { TileLayer } from "react-leaflet/TileLayer";
-import { useMap } from "react-leaflet/hooks";
-import L from "leaflet"
+import "./Map.css";
+import { Map, Marker } from "pigeon-maps";
 
-function Map() {
+const MAPTILER_ACCESS_TOKEN = "h7gcwKw9qu9SMC1DDScK";
+const MAP_ID = "bright";
+
+function mapTiler(x, y, z, dpr) {
+  return `https://api.maptiler.com/maps/${MAP_ID}/256/${z}/${x}/${y}${
+    dpr >= 2 ? "@2x" : ""
+  }.png?key=${MAPTILER_ACCESS_TOKEN}`;
+}
+
+function MapSection() {
   // const [mapCenter, setMapCenter] = useState([51.505, -0.09])
+  const defaultProps = {
+    center: [
+      10.99835602,
+      77.01502627
+    ],
+    zoom: 20,
+  };
+
   return (
-    <div className="map-container">
-      <MapContainer
-        style={{ height: "100%" }}
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={false}
+    <div className="map-container" style={{ height: "100%", width: "100%" }}>
+      <Map
+        provider={mapTiler}
+        dprs={[1, 2]}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker icon={new L.Icon({
-          iconUrl: "leaf-green.png",
-          shadowUrl: "leaf-shadow.png",
-          iconSize: [38, 95],
-          shadowSize: [50, 64],
-          iconAnchor: [22, 94],
-          shadowAnchor: [4, 62],
-          popupAnchor: [-3, -76],
-          className: "marker"
-        })} position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+        <Marker width={50} anchor={defaultProps.center} />
+      </Map>
     </div>
   );
 }
 
-export default Map;
+export default MapSection;

@@ -1,10 +1,16 @@
 .map-container {
   width: 100%;
   padding-top: 1.875rem;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
-.leaflet-pane:has(> .marker) {
+.map-container > div {
+  border-radius: 1rem;
+}
+
+/* .leaflet-pane:has(> .marker) {
   width: 2rem;
   height: 2rem;
   background-color: white;
-}
+} */
