@@ -49,6 +49,7 @@
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 9fr 10fr;
+  text-align: left;
 }
 
 .hotel-image {

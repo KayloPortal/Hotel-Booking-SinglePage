@@ -41,9 +41,9 @@ function MapSection({ hotels }) {
             width={50}
             anchor={hotel["id-geo"].split(",").map((item) => Number(item))}
             // onClick={() => console.log("H")}
-            onClick={() => console.log("H")} 
+            onClick={() => console.log("H")}
           >
-            <MapMarker data={hotel} />
+            <HotelMarker hotel={hotel} />
           </Marker>
         ))}
       </Map>
@@ -51,23 +51,43 @@ function MapSection({ hotels }) {
   );
 }
 
-function MapMarker({ data }) {
+function HotelMarker({ hotel }) {
   // const { contextSafe } = useGSAP();
-  // const [ opens, setOpens ] = 
+  // const [ opens, setOpens ] =
+
+  const markerE = useRef();
+
+  useGSAP(
+    () => {
+      console.log("ran");
+      gsap.fromTo(
+        ".marker-content, .marker > .marker-trigonometry",
+        { y: hotel.selected? 40 : 0, scale: hotel.selected? 0.8 : 1 },
+        {
+          opacity: hotel.selected ? 1 : 0,
+          duration: 0.25,
+          skewX: 0,
+          scale: hotel.selected? 1 : 0.8,
+          y: hotel.selected? 0 : 40
+        }
+      );
+    },
+    { scope: markerE, dependencies: [hotel] }
+  );
 
   return (
-    <div className="marker">
+    <div className={`marker`} ref={markerE}>
       <div className="marker-content | round-200">
         <div className="marker-content-container | round-200">
           <img
             className="marker-content__image | round-200"
-            src={data.image}
+            src={hotel.image}
             alt=""
           />
           <p className="marker-content__price | fs-300 fl-height-200 fw-extrabold">
             $
             {(function () {
-              const s = data.price.toString();
+              const s = hotel.price.toString();
               let outString = "";
               for (let i = s.length - 1; i >= 0; i--) {
                 outString = s[i] + outString;
@@ -77,7 +97,7 @@ function MapMarker({ data }) {
             })()}
           </p>
           <p className="marker-content__details | fs-100">
-            {data.bedroom} Beds | {data.bathroom} Baths
+            {hotel.bedroom} Beds | {hotel.bathroom} Baths
           </p>
         </div>
       </div>
@@ -86,7 +106,7 @@ function MapMarker({ data }) {
         <div className="marker-preview__heading | fs-100 fl-height-100 fw-extrabold">
           <p>
             {(function () {
-              const s = data.price.toString();
+              const s = hotel.price.toString();
               return s.substring(0, s.length - 3);
             })()}
             K

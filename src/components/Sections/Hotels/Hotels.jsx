@@ -10,10 +10,10 @@ import { useState } from "react";
 const icons = {
   "Share with Super Host": iconWater,
   "Entire home": iconApartment,
-  "Entire Studio Apartment": iconVilla
-}
+  "Entire Studio Apartment": iconVilla,
+};
 
-function Hotels({hotels}) {
+function Hotels({ hotels, toggleSelection }) {
   return (
     <section className="hotels | fl-height-200">
       <p className="hotels__subheading">430 + Stays</p>
@@ -23,8 +23,13 @@ function Hotels({hotels}) {
       <HotelsTags />
       <ul className="hotels-list">
         {hotels.map((hotel) => (
-          <li key={hotel.id} className="hotel | round-400">
-            <Hotel data={hotel} />
+          <li key={hotel.id} className="">
+            <button
+              className="hotel | round-400"
+              onClick={() => toggleSelection(hotel.id)}
+            >
+              <Hotel data={hotel} />
+            </button>
           </li>
         ))}
       </ul>
@@ -32,22 +37,23 @@ function Hotels({hotels}) {
   );
 }
 
-function Hotel({data}) {
+function Hotel({ data }) {
   return (
     <>
       <div className="hotel-image">
         <img className="hotel__image | round-400" src={data.image} alt="" />
       </div>
       <div className="hotel-texts | fl-height-100 fs-200 fs-200-m">
-        <h3 className="hotel__heading | fw-extrabold fs-400">
-          {data.title}
-        </h3>
+        <h3 className="hotel__heading | fw-extrabold fs-400">{data.title}</h3>
         <div>
           <img className="hotel__rate-image" src={iconStar} alt="rate" />
           <span className="hotel__rate-number">{data.rate}</span>
           <p className="hotel__owner">{data.author}</p>
         </div>
-        <p className="hotel__details">{data.guests} guests | {data.bedroom} bedroom | {data.bathroom} bathroom</p>
+        <p className="hotel__details">
+          {data.guests} guests | {data.bedroom} bedroom | {data.bathroom}{" "}
+          bathroom
+        </p>
         <div>
           <img
             className="hotel__type-image"

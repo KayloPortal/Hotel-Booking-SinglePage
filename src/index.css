@@ -104,6 +104,7 @@ button {
   border: none;
   font-family: inherit;
   background-color: transparent;
+  color: inherit;
 }
 
 button {
