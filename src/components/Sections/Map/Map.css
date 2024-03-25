@@ -9,6 +9,86 @@
   border-radius: 1rem;
 }
 
+.marker {
+  position: relative;
+}
+
+.marker-content,
+.marker-content-container {
+  background-color: var(--neutral-100);
+}
+
+.marker-content {
+  position: absolute;
+  /* display: none;   */
+  bottom: calc(1.875rem + 1.875rem + 0.45rem);
+  width: 9.625rem;
+  left: calc(-4.8125rem + 50%);
+  display: grid;
+  place-items: center;
+  padding: 0.625rem;
+  padding-bottom: 1rem;
+}
+
+.marker > .marker-trigonometry {
+  position: absolute;
+  background-color: var(--neutral-100);
+  width: 2rem;
+  height: 2rem;
+  bottom: calc(1.875rem + 0.5rem);
+  left: calc(2rem - 50%);
+}
+
+.marker-content-container {
+  box-shadow: 0 0.125rem 1.25rem hsla(0, 0%, 0%, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 6.25rem;
+  height: 13.5rem;
+}
+
+.marker-content__price {
+  margin-top: 0.625rem;
+  margin-bottom: 0.25rem;
+}
+
+.marker-content__image {
+  width: 100%;
+  aspect-ratio: 134 / 143;
+}
+
+.marker-preview {
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-preview__heading {
+  background-color: var(--neutral-100);
+  padding-inline: 0.75rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.125rem;
+}
+
+.marker-content__details {
+  line-height: unset;
+}
+
+.marker-trigonometry {
+  clip-path: polygon(0 1%, 50% 100%, 100% 0);
+}
+
+.marker-preview .marker-trigonometry {
+  width: 1rem;
+  height: .45rem;
+  background-color: var(--neutral-100);
+}
+
 /* .leaflet-pane:has(> .marker) {
   width: 2rem;
   height: 2rem;

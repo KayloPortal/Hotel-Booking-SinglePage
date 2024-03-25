@@ -5,61 +5,7 @@ import iconApartment from "/icon-apartment.svg";
 import iconWater from "/icon-smiling-water.svg";
 import iconVilla from "/icon-villa.svg";
 import iconStar from "/icon-star.svg";
-import imageHotel1 from "/image-hotel-1.png";
-import imageHotel2 from "/image-hotel-2.png";
-import imageHotel3 from "/image-hotel-3.png";
 import { useState } from "react";
-
-const hotels = [
-  {
-    title: "Fully Furnished Smart Studio Apartment",
-    rate: "4.8",
-    author: "Mercedes Vito",
-    guests: "2",
-    bedroom: "1",
-    bathroom: "2",
-    "type": "Entire Studio Apartment",
-    "id-geo": "",
-    location: "Los Angeles",
-    "free-cancellation": true,
-    "instant-book": true,
-    price: "720000",
-    image: imageHotel1,
-    id: "3272gdg28d2gdywtudSdaDSvsa33423",
-  },
-  {
-    title: "Furnished Apartment",
-    rate: "3.8",
-    author: "Mercedes Vito",
-    guests: "4",
-    bedroom: "3",
-    bathroom: "2",
-    "type": "Entire home",
-    "id-geo": "",
-    location: "Los Angeles",
-    "free-cancellation": false,
-    "instant-book": true,
-    price: "720000",
-    image: imageHotel2,
-    id: "3272gdg28d2gdywtudSdaDSvsa3ads3",
-  },
-  {
-    title: "Clasic Studio Apartment",
-    rate: "4.0",
-    author: "Mercedes Vito",
-    guests: "2",
-    bedroom: "2",
-    bathroom: "2",
-    "type": "Share with Super Host",
-    "id-geo": "",
-    location: "Los Angeles",
-    "free-cancellation": false,
-    "instant-book": false,
-    price: "720000",
-    image: imageHotel3,
-    id: "3272gdg28d2gdywtudSdaDdsba33423",
-  },
-];
 
 const icons = {
   "Share with Super Host": iconWater,
@@ -67,7 +13,7 @@ const icons = {
   "Entire Studio Apartment": iconVilla
 }
 
-function Hotels() {
+function Hotels({hotels}) {
   return (
     <section className="hotels | fl-height-200">
       <p className="hotels__subheading">430 + Stays</p>
