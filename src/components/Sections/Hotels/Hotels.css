@@ -1,5 +1,10 @@
 .hotels {
   padding: 1.875rem 0 1.125rem 0;
+  overflow-y: scroll;
+}
+
+.hotels::-webkit-scrollbar{
+  display: none;
 }
 
 .hotels__heading {
@@ -76,4 +81,29 @@
 
 .hotel__type-text {
   margin-left: .6875rem;
+}
+
+@media(max-width: 64em){
+  .hotels-tags {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: .75rem;
+  }
+
+  .hotels__tag {
+    padding-inline: .5rem;
+    /* max-width: 10rem; */
+  }
+
+  .hotel__filter-icon {
+    display: none;
+  }
+
+  .hotels-list {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+  
+  .hotel {
+    grid-template-columns: 1fr;
+  }
 }

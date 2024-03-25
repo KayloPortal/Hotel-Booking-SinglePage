@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Sections/Header/Header";
 import Hotels from "./components/Sections/Hotels/Hotels";
-import Map from "./components/Sections/Map/Map";
+import MapSection from "./components/Sections/Map/Map";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Header />
       <main className="container main">
         <Hotels />
-        <Map />
+        <MapSection />
       </main>
     </>
   );

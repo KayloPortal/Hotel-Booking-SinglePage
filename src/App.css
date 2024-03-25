@@ -1,5 +1,16 @@
 .main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-template-columns: 35rem 1fr;
   gap: 2.1875rem;
+}
+
+.hotels,
+.map-container {
+  max-height: calc(100dvh - var(--header-height));
+}
+
+@media(max-width: 64em){
+  .main {
+    grid-template-columns: 1fr;
+  }
 }

@@ -37,6 +37,7 @@
   --page-inline-padding: 1.875rem;
   --page-minimum-padding: 1.5rem;
   --page-layout-width: 1366px;
+  --header-height: 6.625rem;
 
   /* Border Radius */
   --radius-100: 0.5rem;
@@ -60,10 +61,12 @@
 /* defaults */
 
 .container {
-  width: min(
+  /* width: min(
     100% - var(--page-minimum-padding) * 2,
     var(--page-layout-width) - var(--page-inline-padding) * 2
-  );
+  ); */
+  width: calc(100% - var(--page-inline-padding) * 2);
+
   margin-inline: auto;
 }
 
