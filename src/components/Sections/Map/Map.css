@@ -100,8 +100,11 @@
   opacity: 1;
 }
 
-/* .leaflet-pane:has(> .marker) {
-  width: 2rem;
-  height: 2rem;
-  background-color: white;
-} */
+.pigeon-overlays,
+.pigeon-tiles-box {
+  height: unset !important;
+}
+
+.pigeon-click-block {
+  z-index: 10000;
+}

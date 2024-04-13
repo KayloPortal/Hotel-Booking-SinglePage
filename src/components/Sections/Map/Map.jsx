@@ -3,7 +3,7 @@ import "./Map.css";
 import { Map, Marker } from "pigeon-maps";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const MAPTILER_ACCESS_TOKEN = "h7gcwKw9qu9SMC1DDScK";
 const MAP_ID = "bright";
@@ -20,12 +20,6 @@ function MapSection({ hotels }) {
     zoom: 13,
   };
 
-  console.log(
-    hotels.map((hotel) => (
-      <Marker key={hotel.id} width={50} anchor={hotel["id-geo"].split(",")} />
-    ))
-  );
-
   return (
     <div className="map-container" style={{ height: "100%", width: "100%" }}>
       <Map
@@ -34,41 +28,43 @@ function MapSection({ hotels }) {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        {/* <Marker width={50} anchor={defaultProps.center} /> */}
         {hotels.map((hotel) => (
           <Marker
             key={hotel.id}
             width={50}
             anchor={hotel["id-geo"].split(",").map((item) => Number(item))}
-            // onClick={() => console.log("H")}
             onClick={() => console.log("H")}
+            style={{pointerEvents:'auto'}}
           >
             <HotelMarker hotel={hotel} />
           </Marker>
         ))}
+        <Marker
+          width={50}
+          anchor={[34.0549172229829, -118.25578667187575]}
+        >
+          <div onClick={() => console.log("onClick Function")}>Marker</div>
+        </Marker>
       </Map>
     </div>
   );
 }
 
 function HotelMarker({ hotel }) {
-  // const { contextSafe } = useGSAP();
-  // const [ opens, setOpens ] =
 
   const markerE = useRef();
 
   useGSAP(
     () => {
-      console.log("ran");
       gsap.fromTo(
         ".marker-content, .marker > .marker-trigonometry",
-        { y: hotel.selected? 40 : 0, scale: hotel.selected? 0.8 : 1 },
+        { y: hotel.selected ? 40 : 0, scale: hotel.selected ? 0.8 : 1 },
         {
           opacity: hotel.selected ? 1 : 0,
           duration: 0.25,
           skewX: 0,
-          scale: hotel.selected? 1 : 0.8,
-          y: hotel.selected? 0 : 40
+          scale: hotel.selected ? 1 : 0.8,
+          y: hotel.selected ? 0 : 40,
         }
       );
     },
@@ -76,7 +72,7 @@ function HotelMarker({ hotel }) {
   );
 
   return (
-    <div className={`marker`} ref={markerE}>
+    <div className={`marker`} ref={markerE} onClick={() => console.log("H")}>
       <div className="marker-content | round-200">
         <div className="marker-content-container | round-200">
           <img
