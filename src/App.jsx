@@ -6,6 +6,7 @@ import MapSection from "./components/Sections/Map/Map";
 import imageHotel1 from "/image-hotel-1.png";
 import imageHotel2 from "/image-hotel-2.png";
 import imageHotel3 from "/image-hotel-3.png";
+import URLProvider from "./contexts/URL";
 
 function App() {
   const [hotels, setHotels] = useState(
@@ -71,13 +72,13 @@ function App() {
   };
 
   return (
-    <>
+    <URLProvider>
       <Header />
       <main className="container main">
         <Hotels hotels={hotels} toggleSelection={toggleSelection} />
         <MapSection hotels={hotels} />
       </main>
-    </>
+    </URLProvider>
   );
 }
 
