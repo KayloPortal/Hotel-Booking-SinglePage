@@ -33,18 +33,12 @@ function MapSection({ hotels }) {
             key={hotel.id}
             width={50}
             anchor={hotel["id-geo"].split(",").map((item) => Number(item))}
-            onClick={() => console.log("H")}
+            onClick={() => console.log(hotel.id)}
             style={{pointerEvents:'auto'}}
           >
             <HotelMarker hotel={hotel} />
           </Marker>
         ))}
-        <Marker
-          width={50}
-          anchor={[34.0549172229829, -118.25578667187575]}
-        >
-          <div onClick={() => console.log("onClick Function")}>Marker</div>
-        </Marker>
       </Map>
     </div>
   );
@@ -98,7 +92,8 @@ function HotelMarker({ hotel }) {
         </div>
       </div>
       <div className="marker-trigonometry"></div>
-      <button className="marker-preview">
+      <button className="marker-preview"
+      onClick={() => console.log("DSD")}>
         <div className="marker-preview__heading | fs-100 fl-height-100 fw-extrabold">
           <p>
             {(function () {
