@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Sections/Header/Header";
 import Hotels from "./components/Sections/Hotels/Hotels";
@@ -6,7 +6,8 @@ import MapSection from "./components/Sections/Map/Map";
 import imageHotel1 from "/image-hotel-1.png";
 import imageHotel2 from "/image-hotel-2.png";
 import imageHotel3 from "/image-hotel-3.png";
-import URLProvider from "./contexts/URL";
+import { useURLContext } from "./contexts/URL";
+import axios from "axios";
 
 function App() {
   const [hotels, setHotels] = useState(
@@ -61,9 +62,42 @@ function App() {
       },
     ].map((item) => ({ ...item, selected: false }))
   );
+  const URL = useURLContext();
+
+  useEffect(() => {
+    async function fetchData() {
+      // let res = await fetch(URL + "data/conditioned-apartment", {
+      //   mode: "no-cors"
+      // })
+      // res = await res.json()
+      // let { data } = await axios.get("http://localhost:3000/data/", {
+      //   mode: "no-cors",
+      //   // port: 3000,
+      //   // protocol: "http",
+      //   // port: 3000,
+      //   headers: {
+      //     // "Content-Type": "application/json",
+      //     "Access-Control-Allow-Origin": "*",
+      //   },
+      // });
+      // console.log(data);
+      
+      let response = await fetch("http://localhost:3000/data/conditioned-apartment?limit=1&offset=0&desc=a", {
+        method: 'get',
+       
+      })
+      // response = await response.json()
+      console.log(response)
+      response = await response.json()
+      console.log(response)
+      // console.log(response.data)
+    }
+
+    fetchData();
+  }, [URL]);
 
   const toggleSelection = (id) => {
-    console.log(id)
+    console.log(id);
     setHotels((prevHotels) =>
       prevHotels.map((hotel) =>
         hotel.id === id ? { ...hotel, selected: !hotel.selected } : hotel
@@ -72,13 +106,13 @@ function App() {
   };
 
   return (
-    <URLProvider>
+    <>
       <Header />
       <main className="container main">
         <Hotels hotels={hotels} toggleSelection={toggleSelection} />
         <MapSection hotels={hotels} />
       </main>
-    </URLProvider>
+    </>
   );
 }
 

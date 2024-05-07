@@ -5,7 +5,7 @@ const URLContext = createContext()
 
 export default function URLProvider({children}){
   return (
-    <URLContext.Provider value={"http://localhost:3000/"}>
+    <URLContext.Provider value={"localhost"}>
       {children}
     </URLContext.Provider>
   )
